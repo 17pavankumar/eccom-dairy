@@ -156,8 +156,8 @@
       </ul>
 
       <!-- Centered Search Form -->
-      <form class="d-flex mx-auto" role="search" style="max-width: 400px; width: 100%;">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+      <form class="d-flex mx-auto" role="search" style="max-width: 400px; width: 100%;" action="/search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search" />
         <button class="btn btn-outline-dark" type="submit">Search</button>
       </form>
 
@@ -169,16 +169,16 @@
           </a>
           <ul class="dropdown-menu" aria-labelledby="profileDropdown">
             <li><a class="dropdown-item" href="{% url 'profile' %}">Profile</a></li>
-            <li><a class="dropdown-item" href="#">Orders</a></li>
+            <li><a class="dropdown-item" href="{% url 'orders' %}">Orders</a></li>
             <li><a class="dropdown-item" href="{% url 'passwordchange' %}">Change Password</a></li>
             <li><a class="dropdown-item" href="{% url 'logout_page' %}" >Logout</a></li>
           </ul>
         </li>
         <li class="nav-item mx-2">
-          <a class="nav-link text-white" href="{% url 'showcart' %}">Cart 4</a>
+          <a class="nav-link text-white" href="{% url 'showcart' %}">Cart <span class="badge bg-danger"> {% if totalitem > 0 %} {{totalitem}} {% endif %}</span></a>
         </li>
         <li class="nav-item mx-2">
-          <a class="nav-link text-white" href="#">Wishlist 4</a>
+          <a class="nav-link text-white" href="{% url 'showwishlist' %}"> <span class="badge bg-danger">{% if wishlist > 0 %}  {{wishlist}} {% endif %}</span>  <i class="fa fa-heart"></i></a>
         </li>
         {% else %}
         <li class="nav-item mx-2">
