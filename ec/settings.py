@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'app',
-    'decouple',
 ]
 
 MIDDLEWARE = [
@@ -137,8 +136,17 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
-# RAZOR_KEY_ID = config("rzp_test_RfHojcfpM7H6R6")
-# RAZOR_KEY_SECRET = config("AmfYOgwJQXIuPo1hJRZHH2k5")
 
-RAZOR_KEY_ID = "rzp_test_RfHojcfpM7H6R6"
-RAZOR_KEY_SECRET = "AmfYOgwJQXIuPo1hJRZHH2k5"
+from decouple import config,Csv
+
+RAZOR_KEY_ID = config('RAZOR_KEY_ID')
+RAZOR_KEY_SECRET = config('RAZOR_KEY_SECRET')
+
+
+CSRF_TRUSTED_ORIGINS = [
+    'http://api.razorpay.com'
+]
+
+TIME_ZONE = 'Asia/Kolkata'
+
+USE_TZ = True
